@@ -1,0 +1,135 @@
+#出題
+import random
+a = random.randint(0,9)
+
+b = random.randint(0,9)
+while b == a:
+    b = random.randint(0,9)
+    
+c = random.randint(0,9)
+while c == a:
+    while c == b:
+        c = random.randint(0,9)
+d = random.randint(0,9)
+while d == a:
+    while d == b:
+        while d == c:
+            d = random.randint(0,9)    
+
+arr = [a,b,c,d]
+print(arr)
+
+#作答(手寫)
+from PIL import Image
+import pytesseract
+  
+img = Image.open('2540.jpg')
+text = pytesseract.image_to_string(img, lang='eng')
+
+x = 0
+y = 0
+
+e = text[0:1] 
+if e == str(a):
+    x = x + 1
+if e == str(b):
+    y = y + 1
+if e == str(c):
+    y = y + 1
+if e == str(d):
+    y = y + 1
+
+f = text[1:2] 
+if f == str(a):
+    y = y + 1
+if f == str(b):
+    x = x + 1
+if f == str(c):
+    y = y + 1
+if f == str(d):
+    y = y + 1
+
+
+g = text[2:3]
+if g == str(a):
+    y = y + 1
+if g == str(b):
+    y = y + 1
+if g == str(c):
+    x = x + 1
+if g == str(d):
+    y = y + 1
+
+#  
+h= text[3:4]
+if h == str(a):
+    y = y + 1
+if h == str(b):
+    y = y + 1
+if h == str(c):
+    y = y + 1
+if h == str(d):
+    x = x + 1
+print(x,"A",y,"B")
+print(e,f,g,h)
+
+#作答(語音)
+import speech_recognition as sr
+
+#obtain audio from the microphone
+r=sr.Recognizer()
+with sr.Microphone() as source:
+    print("Please wait. Calibrating microphone...")
+    #listen for 5 seconds and create the ambient noise energy level
+    r.adjust_for_ambient_noise(source, duration=5)
+    print("Say something!")
+    audio=r.listen(source)
+    
+stan = r.recognize_google(audio, language="zh-TW")
+print(stan)
+
+x = 0
+y = 0
+
+e = stan[0:1] 
+if e == str(a):
+    x = x + 1
+if e == str(b):
+    y = y + 1
+if e == str(c):
+    y = y + 1
+if e == str(d):
+    y = y + 1
+
+f = stan[1:2] 
+if f == str(a):
+    y = y + 1
+if f == str(b):
+    x = x + 1
+if f == str(c):
+    y = y + 1
+if f == str(d):
+    y = y + 1
+
+
+g = stan[2:3]
+if g == str(a):
+    y = y + 1
+if g == str(b):
+    y = y + 1
+if g == str(c):
+    x = x + 1
+if g == str(d):
+    y = y + 1
+
+#  
+h= stan[3:4]
+if h == str(a):
+    y = y + 1
+if h == str(b):
+    y = y + 1
+if h == str(c):
+    y = y + 1
+if h == str(d):
+    x = x + 1
+print(x,"A",y,"B")
